@@ -1,6 +1,10 @@
 #include "queue.h"
 #include "tile_game.h"
 
+
+bool checker_function (struct game_state state);
+bool was_visited(struct queue *q, struct game_state current);
+
 void enqueue(struct queue *q, struct game_state state) {
 
     uint64_t state_val = serialize(state); //serialize then add to tail
@@ -72,8 +76,8 @@ bool checker_function (struct game_state state){
     return true;
 }
 
-bool was_visited(struct queue *q, struct game_state current){
-    uint64_t state_val = serialize(current);
+bool was_visited(struct queue *q, struct game_state curr){
+    uint64_t state_val = serialize(curr);
     for(struct list_node *current = q->data.head; current != NULL; current = current->next){ //have we visited this state?
         if(current->value == state_val){
             return true;
