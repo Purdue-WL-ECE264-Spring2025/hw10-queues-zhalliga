@@ -3,7 +3,7 @@
 #include <stdlib.h>
 
 struct list_node *new_node(size_t value) { 
-  struct list_node *node = malloc(sizeof(struct list_node));
+  struct list_node *node = calloc(1, sizeof(struct list_node));
 
   if(node == NULL){
     return NULL; 
